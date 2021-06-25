@@ -73,7 +73,7 @@ int solution(string dartResult)
 {
     stringstream ss(dartResult);
 
-    int sum[3] = {0, 0, 0};
+    int sum[3] = {0, 0, 0}; //각 횟수별로 저장
     int options[3] = {1, 1, 1};
     for (int i = 0; i < 3; i++)
     {
@@ -81,20 +81,23 @@ int solution(string dartResult)
         char bonus;
         char option;
 
-        ss >> score;
+        ss >> score; //ss의 값 중 숫자(int)를 score에 저장
 
-        bonus = ss.get();
-        option = ss.get();
+        // .get()은 int로 형변환하지만 char 변수에 담아서 원 값을 저장
+        bonus = ss.get();  //ss의 값 중 문자 1개를 가져와 bonus에 저장 // S, D, T
+        option = ss.get(); //ss의 값 중 문자 1개를 가져와 option에 저장 // *, #
 
+        // .unget()은 마지막에 읽은 글자를 buffer에 담음
         if (option != '*' && option != '#')
         {
-            ss.unget();
+            ss.unget(); //EOF를 담겠지?
         }
 
         switch (bonus)
         {
         case 'S':
             sum[i] += pow(score, 1);
+            // sum[i] += score;
             break;
         case 'D':
             sum[i] += pow(score, 2);
@@ -109,17 +112,20 @@ int solution(string dartResult)
         switch (option)
         {
         case '*':
+            //횟수가 1차례 이상이고, 이전 값에 *가 존재한다면
             if (i > 0 && options[i - 1])
-                options[i - 1] *= 2;
-            options[i] *= 2;
+                options[i - 1] *= 2; //이전 값도 2배
+            options[i] *= 2;         //이번 값도 2배
             break;
         case '#':
             options[i] = -options[i];
+            //options[i] *= -1;
             break;
         default:
             break;
         }
     }
 
+    //각 회차별(0,1,2) 점수 값을 더함
     return sum[0] * options[0] + sum[1] * options[1] + sum[2] * options[2];
 }
