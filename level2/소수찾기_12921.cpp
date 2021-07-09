@@ -50,5 +50,4 @@ int solution(string numbers)
     } while (next_permutation(numbers.begin(), numbers.end()));
 
     return ans.size();
-    ;
 }

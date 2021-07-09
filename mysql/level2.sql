@@ -35,3 +35,12 @@ SELECT count(DISTINCT name)AS count FROM animal_ins;
 SELECT animal_id, name FROM animal_ins 
 WHERE name like '%el%' AND animal_type = 'Dog' ORDER BY name asc;
 
+-- #루시와 엘라 찾기 59046
+SELECT animal_id, name, sex_upon_intake FROM animal_ins 
+WHERE name IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty') ORDER BY animal_id;
+
+-- #중성화 여부 파악하기 59409
+-- @see : select문에 if문을 이용하면 sex_upon_intake 값의 조건에 따라 X 혹은 O 의 값을 보여줌
+--        AS하면 새 칼럼명으로 보여줌
+SELECT animal_id, name, IF(sex_upon_intake LIKE 'Intact%', 'X', 'O') AS '중성화' 
+FROM animal_ins
