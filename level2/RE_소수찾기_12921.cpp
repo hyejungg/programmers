@@ -38,6 +38,7 @@ int solution(string numbers)
     set<int> ans;                         //numbers 중 만들 수 있는 조합에서 소수인 경우 값 저장
     /*
      * @see : next_permutation(시작iter, 끝iter) : 해당 배열의 값으로 순열을 구함
+              사용 전에 정렬을 해주어야 모든 순열을 뽑아낼 수 있음
               1 2 3 4 라는 값이 있다면 다음 순열은 1 2 4 3으로 바꾸고 true return. 
      */
     do
