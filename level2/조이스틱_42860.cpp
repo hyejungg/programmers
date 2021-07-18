@@ -33,5 +33,6 @@ int solution(string name)
             left_min = min(left_min, left_move);
         }
     }
-    return answer += left_min;
+    answer += left_min;
+    return answer;
 }
