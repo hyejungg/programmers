@@ -2,7 +2,6 @@
 #include <vector>
 #include <map>
 #include <sstream> //문자열 공백 기준으로 구분
-#include <iostream>
 using namespace std;
 
 vector<pair<bool, string>> enter_v; //first : 0(out)/1(in), second : nickname
