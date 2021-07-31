@@ -35,9 +35,10 @@ int solution(string str1, string str2)
     if (a.empty() && b.empty())
         return 65536;
 
-    //합집합과 교집합을 구한다.
+    //두 집합의 개수를 더한다. (교집합을 찾은 경우, 집합에서 지울 것이기 때문에)
     hab = a.size() + b.size();
 
+    //배열을 탐색하며 교집합의 개수을 구한다.
     if (a.size() > b.size())
     {
         for (auto iter : b)
@@ -63,6 +64,7 @@ int solution(string str1, string str2)
         }
     }
 
+    //합집합의 개수는 a.size() + b.size() - 교집합.size() 이므로
     hab -= gyo;
 
     if (hab == 0)
