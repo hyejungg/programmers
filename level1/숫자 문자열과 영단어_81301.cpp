@@ -79,10 +79,7 @@ int solution(string s)
     return stoi(answer);
 }
 //정규식을 이용한 풀이
-#include <string>
-#include <vector>
-#include <regex>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int solution(string s)
