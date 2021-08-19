@@ -101,8 +101,9 @@ bool is_valid_place(const vector<string> &place)
 
     vector<vector<bool>> is_in_use(
         N,
-        vector<bool>(N, false));
+        vector<bool>(N, false)); //is_in_use를 bool 타입의 nxn 배열로 생성.
 
+    //탐색에 사용될 위치 (우 좌 상 하)
     int di[] = {1, -1, 0, 0};
     int dj[] = {0, 0, 1, -1};
 
@@ -141,7 +142,7 @@ vector<int> solution(vector<vector<string>> places)
 {
     vector<int> answer(5);
     //행 별로 거리두기 여부를 확인 후 결과를 answer에 저장
-    for (size_t i = 0; i < 5; i++) //size_t는 unsigned int
+    for (size_t i = 0; i < 5; i++) //size_t는 이론상 가장 큰 사이즈를 담을 수 있는 unsigned 데이터 타입
         answer[i] = is_valid_place(places[i]);
     return answer;
 }
