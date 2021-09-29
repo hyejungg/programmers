@@ -76,5 +76,5 @@ vector<int> solution(vector<int> enter, vector<int> leave)
             hold.erase(leave[j++]);
     }
 
-    return ret;
+    return ret; 
 }
