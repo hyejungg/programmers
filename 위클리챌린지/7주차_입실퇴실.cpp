@@ -75,6 +75,5 @@ vector<int> solution(vector<int> enter, vector<int> leave)
         while (j < n && hold.find(leave[j]) != hold.end())
             hold.erase(leave[j++]);
     }
-
-    return ret;
+    return ret; 
 }
