@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 using namespace std;
 
@@ -38,4 +37,33 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
     }
     
     return --answer; //clothes의 크기가 n+1이니까
+}
+
+// 다른 방법
+#include <vector>
+#include <set>
+#include <unordered_set>
+using namespace std;
+
+int solution(int n, vector<int> lost, vector<int> reserve) {
+    // 체육복을 잃어버린 애들의 집합 (순서 미지정)
+    unordered_set<int> l(lost.begin(), lost.end()); // lost의 vector의 값으로 초기화
+    set<int> r; // 체육복 여벌이 있는 애들의 집합
+    unordered_set<int> inter; //l과 r의 교집합
+    for(auto& x : reserve){
+        if(l.find(x) == l.end()) //찾지 못한다면
+            r.insert(x);
+        else //찾았다면
+            inter.insert(x);
+    }
+    for(auto& x : inter){
+        l.erase(x);
+    }
+    for(auto& x : r){
+        if(l.find(x - 1) != l.end()) //찾지 못한다면
+            l.erase(x - 1); //빌려준 것
+        else if(l.find(x + 1) != l.end())
+            l.erase(x + 1);
+    }
+    return n - l.size(); 
 }
