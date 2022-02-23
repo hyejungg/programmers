@@ -24,5 +24,28 @@ string solution(vector<int> numbers) {
         answer += n;
     }
     
-    return answer;
+    return answer[0] == '0' ? "0" : answer; //test case 11 예외처리
+} 
+// 다시 풀이
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+bool cmp(int a, int b){
+    // a+b했을 때, a를 앞서도록 할 때 true / b를 앞서도록 할 때 false
+    string s1 = to_string(a) + to_string(b);
+    string s2 = to_string(b) + to_string(a);
+    return s1 > s2; 
 }
+
+string solution(vector<int> numbers) {
+    string answer = "";
+    sort(numbers.begin(), numbers.end(), cmp);
+    for(auto& n : numbers)
+        ansewr += to_string(n);
+    
+    //test case 1번 예외
+    return answer[0] == '0' ? "0" : answer;
+} 
